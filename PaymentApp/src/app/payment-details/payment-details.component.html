@@ -1,0 +1,35 @@
+<section class="card">
+    <section class="card-header text-center">
+        <h1>Payment Details</h1>
+    </section>
+    <section class="card-body">
+        <section class="row">
+            <section class="col-md-6">
+                <app-payment-detail-form></app-payment-detail-form>
+            </section>
+            <section class="col-md-6">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Card Owner</th>
+                            <th>Card Number</th>
+                            <th>Exp. Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let pd of service.detailsList">
+                            <td (click)="populateForm(pd)">{{pd.cardOwnerName}}</td>
+                            <td (click)="populateForm(pd)">{{pd.cardNumber}}</td>
+                            <td (click)="populateForm(pd)">{{pd.expirationDate}}</td>
+                            <td>
+                                <i class="fas fa-trash-alt text-danger fa-lg" (click)="onDelete(pd.paymentDetailID)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+       
+    </section>
+</section>
