@@ -1,20 +1,13 @@
 <form novalidate #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <section class="card">
-        <section class="card-header text-center">
-            <h3>Card Type</h3>
-        </section>
-        <section class="card-body">
-            <input type="hidden" name="pkCardTypeId" [value]="service.cardFormData.pkCardTypeId">
-            <section class="form-group">
-                <label>Card Type</label>
-                <input required [class.invalid]="cardType.invalid && cardType.touched" class="form-control form-control-lg" type="text" maxlength="25" placeholder="ex: Discover" name="cardType" #cardType="ngModel" [(ngModel)]="service.cardFormData.cardType"> 
-            </section>
-            <br>
-            <section class="form-group">
-                <section class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
-                </section>
-            </section>
+    <input type="hidden" name="pkCardTypeId" [value]="service.cardFormData.pkCardTypeId">
+    <section class="form-group">
+        <label>Card Type</label>
+        <input required [class.invalid]="cardType.invalid && cardType.touched" class="form-control form-control-lg" type="text" maxlength="25" placeholder="ex: Discover" name="cardType" #cardType="ngModel" [(ngModel)]="service.cardFormData.cardType"> 
+    </section>
+    <br>
+    <section class="form-group">
+        <section class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
         </section>
     </section>
 </form>

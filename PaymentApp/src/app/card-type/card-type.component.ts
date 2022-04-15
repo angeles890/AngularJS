@@ -12,12 +12,34 @@ export class CardTypeComponent implements OnInit {
 
   constructor(public service:LookupValuesService) { }
 
+  modalTitle:string;
+  ActivateAddEditCardTypeComp:boolean=false;
+  lCardType:LCardType;
+
   ngOnInit(): void {
     this.service.getCardTypeList();
   }
 
-  populateForm(selectedRecord:LCardType)
+  editCardType(selectedRecord:LCardType)
   {
+    console.log('Button Click');
     this.service.cardFormData = Object.assign({},selectedRecord);
+    //this.lCardType = Object.assign({},selectedRecord);
+    this.modalTitle = "Edit Card Type";
+    this.ActivateAddEditCardTypeComp = true;
+  }
+
+  addCardType()
+  {
+    //this.lCardType = new LCardType();
+    this.service.cardFormData = new LCardType();
+    this.modalTitle = "Add Card Type";
+    this.ActivateAddEditCardTypeComp = true;
+  }
+
+  closeCardType()
+  {
+    this.ActivateAddEditCardTypeComp = false;
+    this.service.getCardTypeList();
   }
 }

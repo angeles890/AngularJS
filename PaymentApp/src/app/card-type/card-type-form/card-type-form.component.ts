@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LCardType } from 'src/app/shared/lcard-type.model';
@@ -23,6 +23,10 @@ export class CardTypeFormComponent implements OnInit {
     {
       this.insert(form);
     }
+    else
+    {
+      this.update(form);
+    }
   }
 
   insert(form:NgForm)
@@ -36,6 +40,17 @@ export class CardTypeFormComponent implements OnInit {
       },
       err=>{console.log(err)}
     );
+  }
+
+  update(form:NgForm)
+  {
+    this.service.putCardType().subscribe(
+      res=>{
+        this.toastr.info('Update Succesfull','Card Type');
+      },
+      err=> {console.log(err);}
+    );
+
   }
 
   resetForm(form:NgForm)

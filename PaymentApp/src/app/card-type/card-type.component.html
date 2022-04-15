@@ -1,20 +1,20 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button (click)="addCardType()" type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Add Card Type
-  </button>
+</button>
   
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+          <button type="button" (click)="closeCardType()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <app-card-type-form></app-card-type-form>
+            <app-card-type-form *ngIf="ActivateAddEditCardTypeComp"></app-card-type-form>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let pd of service.cardTypeList">
-            <td (click)="populateForm(pd)">{{pd.cardType}}</td>
+            <td (click)="editCardType(pd)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{{pd.cardType}}</td>
             <td>
                 <i class="fas fa-trash-alt text-danger fa-lg"></i>
             </td>

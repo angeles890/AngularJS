@@ -20,6 +20,14 @@ export class LookupValuesService {
     return this.http.post(this.cardTypeURL,this.cardFormData);
   }
 
+  // PUT
+  // api/LCardTypes/5
+  putCardType()
+  {
+    return this.http.put(`${this.cardTypeURL}/${this.cardFormData.pkCardTypeId}`,this.cardFormData);
+  }
+
+
   // GET
   // api/LCardTypes
   // returns list of card types

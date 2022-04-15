@@ -4,5 +4,5 @@ export class PaymentDetail {
     cardNumber:string = '';
     expirationDate:string='';
     securityCode:string='';
-    fkCardTypeId:number;
+    fkCardTypeId:string='';
 }

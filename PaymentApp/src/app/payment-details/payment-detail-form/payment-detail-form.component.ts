@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { LookupValuesService } from 'src/app/shared/lookup-values.service';
 import { PaymentDetail } from 'src/app/shared/payment-detail.model';
 import { PaymentDetailService } from 'src/app/shared/payment-detail.service';
 
@@ -13,9 +14,10 @@ import { PaymentDetailService } from 'src/app/shared/payment-detail.service';
 export class PaymentDetailFormComponent implements OnInit {
 
   // init PD Form Component with Service and Toastr via dependency injection
-  constructor(public service:PaymentDetailService, private toastr:ToastrService) { }
-
+  constructor(public service:PaymentDetailService, private toastr:ToastrService, public lookupService: LookupValuesService) { }
+  
   ngOnInit(): void {
+    this.lookupService.getCardTypeList();
   }
 
   onSubmit(form:NgForm)
@@ -39,6 +41,7 @@ export class PaymentDetailFormComponent implements OnInit {
             this.resetForm(form);
             // show succesful entry via toaster pop up
             this.toastr.success('Submitted Succesfully','Payment Detail Register');
+            this.service.getDetailsList();
           }, 
           err=>{
             // response Error, log error to console
@@ -53,6 +56,7 @@ export class PaymentDetailFormComponent implements OnInit {
       res=>{
         this.resetForm(form);
         this.toastr.info('Update Success','Payment Detail Register');
+        this.service.getDetailsList();
       },
       err=>{
         console.log(err);
