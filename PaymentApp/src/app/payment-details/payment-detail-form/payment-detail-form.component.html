@@ -1,31 +1,31 @@
 <form novalidate #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
     <input type="hidden" name="paymentDetailID" [value]="service.formData.paymentDetailID">
     <div class="form-group">
-        <label>Card Owner Name</label>
+        <label>Card Owner Name*</label>
         <input required [class.is-invalid]="cardOwnerName.invalid && cardOwnerName.touched" class="form-control form-control-lg" type="text" placeholder="Full Name" name="cardOwnerName" #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName">
     </div>
     <div class="form-group">
-        <label>Card Number</label>
+        <label>Card Number*</label>
         <input required [class.is-invalid]="cardNumber.invalid && cardNumber.touched" class="form-control form-control-lg" type="text" maxlength="16" minlength="16" placeholder="16 Digit Number" name="cardNumber" #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber">
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label>Expiration Date</label>
+                <label>Expiration Date*</label>
                 <input required [class.is-invalid]="expirationDate.invalid && expirationDate.touched" class="form-control form-control-lg" type="text" maxlength="5" minlength="5" placeholder="MM/YY" name="expirationDate" #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label>Security Code</label>
+                <label>Security Code*</label>
                 <input required [class.is-invalid]="securityCode.invalid && securityCode.touched" class="form-control form-control-lg" type="text" maxlength="3" minlength="3" placeholder="123" name="securityCode" #securityCode="ngModel" [(ngModel)]="service.formData.securityCode">
             </div>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label" for="fkCardTypeId">Card Type</label>
+        <label class="control-label" for="fkCardTypeId">Card Type*</label>
         <select name="fkCardTypeId" [(ngModel)]="service.formData.fkCardTypeId" class="form-select" [class.is-invalid]="fkCardTypeId.invalid && fkCardTypeId.touched" required #fkCardTypeId="ngModel">            
-            <option [ngValue]="null" disabled>--Select--</option>
+            <option [ngValue]="null" selected disabled>--Select--</option>
             <option *ngFor="let li of lookupService.cardTypeList" value="{{li.pkCardTypeId}}">{{li.cardType}}</option>
         </select>
         <span class="text-danger" *ngIf="fkCardTypeId.touched && fkCardTypeId.invalid">
