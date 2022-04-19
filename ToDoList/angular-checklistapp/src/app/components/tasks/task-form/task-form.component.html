@@ -1,1 +1,26 @@
-<p>task-form works!</p>
+<section class="card">
+    <section class="card-header">
+        <h4 class="text-center">Task</h4>
+    </section>
+    <section class="card-body">
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+            <input type="hidden" name="pkTaskId" [value]="service.formData.pkTaskId">
+            <section class="form-group">
+                <label>Reminder Text</label>
+                <input required class="form-control" placeholder="Remind me to..." name="text" #text="ngModel" [(ngModel)]="service.formData.text">
+            </section>
+            <section class="form-group">
+                <label>Date</label>
+                <input required type="date" class="form-control" name="day" #day="ngModel" [(ngModel)]="service.formData.day">
+            </section>
+            <section class="form-group">
+                <label>Set Reminder?</label>
+                <br>
+                <input type="checkbox" name="reminder" #reminder="ngModel" [(ngModel)]="service.formData.reminder">
+            </section>
+            <section class="form-group">
+                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+            </section>
+        </form>
+    </section>
+</section>
