@@ -25,7 +25,7 @@
     <div class="form-group">
         <label class="control-label" for="fkCardTypeId">Card Type*</label>
         <select name="fkCardTypeId" [(ngModel)]="service.formData.fkCardTypeId" class="form-select" [class.is-invalid]="fkCardTypeId.invalid && fkCardTypeId.touched" required #fkCardTypeId="ngModel">            
-            <option [ngValue]="null" selected disabled>--Select--</option>
+            <option value="" selected disabled>--Select--</option>
             <option *ngFor="let li of lookupService.cardTypeList" value="{{li.pkCardTypeId}}">{{li.cardType}}</option>
         </select>
         <span class="text-danger" *ngIf="fkCardTypeId.touched && fkCardTypeId.invalid">

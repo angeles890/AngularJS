@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from 'src/app/shared/tasks.service';
+import { Task } from 'src/app/shared/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -8,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: TasksService) { }
 
   ngOnInit(): void {
+    this.service.getTasks();
   }
 
+  onClick(selectedTask:Task)
+  {
+    console.log(selectedTask.fkTaskTypeId);
+    this.service.formData = Object.assign({},selectedTask);
+  }
 }

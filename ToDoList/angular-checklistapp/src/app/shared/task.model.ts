@@ -4,4 +4,5 @@ export class Task {
     text:string='';
     day:Date;
     reminder:boolean = true;
+    fkTaskTypeId:string = '';
 }

@@ -18,5 +18,7 @@ namespace CheckList.Models
         public DateTime Day { get; set; }
         [Column(TypeName = "bit")]
         public bool Reminder { get; set; }
+        [Column(TypeName = "int")]
+        public int? FkTaskTypeId { get; set; }
     }
 }

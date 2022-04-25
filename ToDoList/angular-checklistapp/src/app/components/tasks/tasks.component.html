@@ -3,6 +3,25 @@
         <app-task-form></app-task-form>
     </section>
     <section class="col-md-8">
-        <p>Tasks Lists</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Text</th>
+                    <th>Reminder</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of service.taskList">
+                    <td (click)="onClick(task)">{{task.day}}</td>
+                    <td (click)="onClick(task)">{{task.text}}</td>
+                    <td (click)="onClick(task)">{{task.reminder}}</td>
+                    <td>
+                        <i class="fas fa-trash-alt text-danger fa-lg"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </section>

@@ -15,5 +15,7 @@ namespace PaymentAPI.Models
         }
 
         public DbSet<CheckListModel> CheckListModel { get; set; }
+        public DbSet<LTaskType> LTaskType { get; set; }
+
     }
 }
